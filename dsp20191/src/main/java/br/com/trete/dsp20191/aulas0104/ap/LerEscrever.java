@@ -1,4 +1,4 @@
-package dsp20191atividade1;
+package br.com.trete.dsp20191.aulas0104.ap;
 import java.io.*;
 
 public class LerEscrever {
