@@ -28,7 +28,7 @@ public class LerEscrever {
                 System.out.println(linha);
             }
 
-            RelerReescrever.reescreverArquivo(texto);
+            RelerReescrever.reescreverArquivo();
         } catch (IOException e) {
             e.printStackTrace();
         }
