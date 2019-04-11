@@ -6,6 +6,7 @@ import br.com.trete.dsp20191.aulas1316.model.Departamento;
 import br.com.trete.dsp20191.aulas1316.model.Funcionario;
 import br.com.trete.dsp20191.aulas1316.model.Lotacao;
 import br.com.trete.dsp20191.aulas1316.persistencia.base.CriaConexao;
+import br.com.trete.dsp20191.aulas1316.persistencia.ddl.alteracao.AdicionaFKTabelaLotacoes;
 import br.com.trete.dsp20191.aulas1316.persistencia.ddl.criacao.TableCargosCreate;
 import br.com.trete.dsp20191.aulas1316.persistencia.ddl.criacao.TableDepartamentosCreate;
 import br.com.trete.dsp20191.aulas1316.persistencia.ddl.criacao.TableFuncionariosCreate;
@@ -45,7 +46,7 @@ public class MainAulas1316 {
         TableFuncionariosCreate criaFuncionarios = new TableFuncionariosCreate();
 
         try{
-            criaDepartamentos.criaTabela();
+            criaFuncionarios.criaTabela();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -54,6 +55,13 @@ public class MainAulas1316 {
         try{
             criaLotacoes.criaTabela();
         }catch(Exception e){
+            e.printStackTrace();
+        }
+        AdicionaFKTabelaLotacoes adicionaFKTabelaLotacoes = new AdicionaFKTabelaLotacoes();
+
+        try {
+            adicionaFKTabelaLotacoes.alteraTabela();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -115,7 +123,8 @@ public class MainAulas1316 {
         }
 
         for(i = 0; i<= 9; i++){
-            listaLotacao.add(new Lotacao(idLong, dataInicial, dataFinal, listaCargo.get(i), listaDepartamento.get(i)));
+            int j = i % 3;
+            listaLotacao.add(new Lotacao(idLong, dataInicial, dataFinal, listaCargo.get(j), listaDepartamento.get(j)));
             try{
                 persisteLotacao.persisteLotacao(listaLotacao.get(i));
             }catch(Exception e){
