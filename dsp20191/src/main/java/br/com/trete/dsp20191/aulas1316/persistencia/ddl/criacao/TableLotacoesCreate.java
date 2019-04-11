@@ -13,10 +13,11 @@ public class TableLotacoesCreate extends PersistenciaJdbc {
 
         String sql = "CREATE TABLE IF NOT EXISTS LOTACOES(\n" +
                 "ID_LOTACAO LONG NOT NULL PRIMARY KEY,\n" +
-                "DATAINICAL DATE NOT NULL," +
+                "DATAINICIAL DATE NOT NULL,\n" +
                 "DATAFINAL DATE NOT NULL,\n" +
-                "ID_CARGO VARCHAR(15)" +
-                "ID_DEPARTAMENTO VARCHAR(15)" +
+                "CARGO LONG NOT NULL,\n" +
+                "DEPARTAMENTO LONG NOT NULL," +
+                "FUNCIONARIO LONG NOT NULL" +
                 ")";
 
         stmt.executeUpdate(sql);
